@@ -1,0 +1,12 @@
+{# /templates/hello.html.twig #}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Page d'accueil</title>
+    </head>
+    <body>
+        <p>Je suis né le {{ birthday | format_datetime('full', 'none', locale='fr') }}</p>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+security:
+    password_hashers:
+        App\Security\User:
+            algorithm: auto
+
+    providers:
+        users_in_memory: { memory: null }
+
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            id: App\Security\UserProvider
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            lazy: true
+            provider: users_in_memory
+            custom_authenticator: App\Security\FormLoginAuthenticator
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
